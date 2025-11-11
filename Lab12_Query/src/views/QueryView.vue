@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, watch } from "vue";
-import { collection, query, where, getDocs, limit, orderBy , or  } from "firebase/firestore";
+import { collection, query, where, getDocs, limit, orderBy, or, serverTimestamp, doc, setDoc, deleteDoc, addDoc, updateDoc , getCountFromServer , getAggregateFromServer , count} from "firebase/firestore";
 import db from "../firebase/init.js";
 import Documents from "../components/Documents.vue";
 import { useRoute } from "vue-router";
@@ -41,7 +41,7 @@ async function getQuery() {
       where("state", "in", ["FL", "DC"]),
       where("pop", ">", 60000)
     );
-  }else if (qryId == 5) {
+  } else if (qryId == 5) {
     title.value = "List zips in DC or cities with population > 100,000.";
     const zipsRef = collection(db, "zips");
     qry = query(
@@ -73,7 +73,52 @@ async function getQuery() {
       where("loc.x", "<=", 73),
       limit(10)
     );
+  } else if (qryId == 8) {
+    const todoRef = doc(db, "todos", "INT305")
+    await setDoc(todoRef, {
+      title: "Add another Todo",
+      completed: false,
+      createdAt: serverTimestamp()
+    })
+    return
+  } else if (qryId == 9) {
+    const todoCollRef = collection(db, "todos")
+    await addDoc(todoCollRef, {
+      title: "Add another todo with addDoc",
+      completed: false,
+      createdAt: serverTimestamp()
+    })
+    return
+  } else if (qryId == 10) {
+    title.value = "10. set completed to be TRUE"
+    const todoRef = doc(db, "todos", "INT305")
+    await updateDoc(todoRef, {
+      completed: true
+    })
+    return
+  } else if (qryId == 11) {
+    title.value = "11. delete doc"
+    const todoRef = doc(db, "todos", "oRTFQYmRSJl7tf0KSZQy")
+    await deleteDoc(todoRef)
+    return
+  } else if (qryId == 12) {
+    const todoCollRef = doc(db, "todos")
+    const qry = query(todoCollRef , where('completed','==',true))
+    // const snapshot = await getCountFromServer(qry)
+    const snapshot = await getAggregateFromServer(qry, {
+      countTodo: count
+    })
+    console.log('Count  :'+snapshot.data().countTodo);
   }
+
+
+
+
+
+
+
+
+
   const querySnap = await getDocs(qry);
   querySnap.forEach((doc) => {
     let data = doc.data();

@@ -31,7 +31,7 @@ import { RouterLink, RouterView } from "vue-router";
         5. List zips in DC or cities with population > 100,000.
       </div>
     </RouterLink>
-
+    <!-- 
     <RouterLink to="/query/6">
       <div class="QueryPractice">
         6. List zips in DC and sort the data by population.
@@ -41,7 +41,33 @@ import { RouterLink, RouterView } from "vue-router";
       <div class="QueryPractice">
         7. List zips latitude (x) between 71 and 73.
       </div>
+    </RouterLink> -->
+    <RouterLink to="/query/8">
+      <div class="QueryPractice">
+        8. Add Another Todo
+      </div>
     </RouterLink>
+    <RouterLink to="/query/9">
+      <div class="QueryPractice">
+        9. Add Another Todo with addDoc
+      </div>
+    </RouterLink>
+    <RouterLink to="/query/10">
+      <div class="QueryPractice">
+        10.Update doc INT305 set completed to be TRUE
+      </div>
+    </RouterLink>
+    <RouterLink to="/query/11">
+      <div class="QueryPractice">
+        11.Remove a  Document : oRTFQYmRSJl7tf0KSZQy
+      </div>
+    </RouterLink>
+    <RouterLink to="/query/12">
+      <div class="QueryPractice">
+        12.Count todo documents
+      </div>
+    </RouterLink>
+
   </div>
   <div id="detail">
     <RouterView />
