@@ -17,19 +17,19 @@ async function getQuery() {
     let qry = null
     if (qryId == 1) {
         heading.value = 'Update iPhone 17 Pro Max price to 1199'
-        category.value = ''   /* All categories */
-        const qryRef = doc(db, 'myproducts', 'iPhone 17')
+        category.value = ''  
+        const qryRef = doc(db, 'myproducts', 'iPhone17')
         await updateDoc(qryRef, { price: 1199 })
     } else if (qryId == 2) {
         heading.value = 'Add Color Blue to Iphone 17 Pro Max'
         category.value = ''
-        const docRef = doc(db, 'myproducts', 'iPhone 17')
+        const docRef = doc(db, 'myproducts', 'iPhone17')
         await updateDoc(docRef, { color: arrayUnion('Blue')})
         
     } else if (qryId == 3) {
         heading.value = "Decrease the iPhone 17 Pro Max price by 100"
         category.value = ''
-        const docRef = doc(db, 'myproducts', 'iPhone 17')
+        const docRef = doc(db, 'myproducts', 'iPhone17')
         await updateDoc(docRef, {price: increment(-100)})
     }
     else if (qryId == 4) { 
@@ -50,9 +50,6 @@ async function getQuery() {
         const docRef = doc(db, 'myproducts', 'iPhone17')
         await updateDoc(docRef, {color:arrayRemove("Silver")})
     }
-
-
-
 
     // else if (qryId == 2) {
     //     heading.value = 'Update Iphone 17 '
@@ -185,10 +182,6 @@ async function getQuery() {
     //     }))
     //     return
     // }
-    
-
-
-
 }
 
 onMounted(() => {
