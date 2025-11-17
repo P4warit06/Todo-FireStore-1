@@ -11,11 +11,15 @@ const props = defineProps({
 <template>
     <div class="menu">
         <RouterLink class="new" to="/products/add">Add Product</RouterLink>
+        <RouterLink class="item" to="/query/1">Update iPhone 17 Pro Max price to 1199</RouterLink>
+        <RouterLink class="item" to="/query/2">Add Color 'Blue' to Iphone 17 Pro Max</RouterLink>
+        <RouterLink class="item" to="/query/3">Decrease the iPhone 17 Pro Max price by 100 </RouterLink>
+        <RouterLink class="item" to="/query/4">Add 'Storage Size' field to the iPhone 17 Pro Max with 1TB</RouterLink>
+        <RouterLink class="item" to="/query/5">Remove 'Storage Size' field to the iPhone 17 Pro Max </RouterLink>
+        <RouterLink class="item" to="/query/6">Remove the book title 'MongoDB The Definitive Guide'</RouterLink>
+        <RouterLink class="item" to="/query/7">Remove Color 'Silver' in the iPhone 17 Pro Max </RouterLink>
         <template v-if="props.category==''">
             <RouterLink class="item" to="/query/1">Sort by price</RouterLink>
-            <RouterLink class="item" to="/query/2">Update Iphone 17</RouterLink>
-            <RouterLink class="item" to="/query/3">Delete Iphone 17</RouterLink>
-            <RouterLink class="item" to="/query/4">Sort by title (desc)</RouterLink>
 
             <!--  RouteLink for querying All  -->
 
